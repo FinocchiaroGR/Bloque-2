@@ -1,1 +1,1 @@
-# Bloque-2-y-Equipo-1
+# Bloque 2 - Equipo 1
