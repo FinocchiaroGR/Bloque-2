@@ -1,12 +1,13 @@
 {
     // See https://go.microsoft.com/fwlink/?LinkId=733558
     // for the documentation about the tasks.json format
+    //WOOOO
     "version": "2.0.0",
     "tasks": [
         {
             "label": "djangoRS",
             "type": "shell",
-            "command": "source virtual/bin/activate ; cd Educap ; python3 manage.py runserver",
+            "command": "virtual/Scripts/activate ; cd Educap ; python manage.py runserver",
             "problemMatcher": [],
             "group": {
                 "kind": "build",
