@@ -4,6 +4,8 @@
 
 # python -m venv virtual
 
+# virtual/Scripts/activate (Scripts - )
+
 # pip install django
 
 # pip install django-crispy-forms
