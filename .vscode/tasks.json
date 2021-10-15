@@ -6,7 +6,7 @@
         {
             "label": "djangoRS",
             "type": "shell",
-            "command": "virtual/Scripts/activate ; cd Educap ; py manage.py runserver",
+            "command": "source virtual/bin/activate ; cd Educap ; python3 manage.py runserver",
             "problemMatcher": [],
             "group": {
                 "kind": "build",
