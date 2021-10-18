@@ -8,5 +8,8 @@ class Category(models.Model):
     Description = models.CharField(max_length=100)
     DateCreated = models.DateTimeField(auto_now_add=True)
 
+
     def __str__(self):
-        return f"{self.Name}"
+        return f"{self.CategoryID} {self.Name}  {self.Description}"
+
+    
