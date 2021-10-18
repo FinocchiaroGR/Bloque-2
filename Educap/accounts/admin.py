@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import *
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
+
 # Register your models here.
 
 
@@ -9,7 +10,7 @@ class UserAdmin(BaseUserAdmin):
         (None, {'fields': ('email', 'password', 'first_name')}),
         ('Permissions', {'fields': (
             'is_active',
-            'groups',
+            'is_staff',
         )}),
     )
     add_fieldsets = (
@@ -22,11 +23,11 @@ class UserAdmin(BaseUserAdmin):
         ),
     )
 
-    list_display = ('email', 'first_name', 'last_login')
-    list_filter = ('is_active', 'groups')
+    list_display = ('email', 'first_name', 'is_staff','last_login')
+    list_filter = ('is_active', 'is_staff', 'groups')
     search_fields = ('email',)
     ordering = ('email',)
-    filter_horizontal = ('groups', 'user_permissions',)
+    filter_horizontal = ('groups',)
 
 
 admin.site.register(UserModel, UserAdmin)
