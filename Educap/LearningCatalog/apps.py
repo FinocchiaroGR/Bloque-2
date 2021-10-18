@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class CategoryConfig(AppConfig):
+class LearningcatalogConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'Category'
+    name = 'LearningCatalog'
