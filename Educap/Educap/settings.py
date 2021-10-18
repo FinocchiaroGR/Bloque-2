@@ -28,9 +28,11 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # Application definition
 
 INSTALLED_APPS = [
+    'crispy_forms',
     'accounts',
     'myAccount',
     'django.contrib.admin',
@@ -105,9 +107,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-MX'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Mexico_City'
 
 USE_I18N = True
 
@@ -125,3 +127,13 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Uso del modelo de cuentas.Usuario para el manejo de autenticacion en el sistema
+AUTH_USER_MODEL = 'accounts.UserModel'
+
+# Cambio de urls para la autenticacion en el sistema
+
+LOGIN_REDIRECT_URL = "login"
+LOGOUT_REDIRECT_URL = "login"
+EMAIL_HOST = "localhost"
+EMAIL_PORT = 1025
