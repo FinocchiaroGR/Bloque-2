@@ -1,11 +1,15 @@
 from django.contrib import admin
 from .models import *
-from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
 # Register your models here.
 
+admin.site.site_header = "Educap Admin Panel"
+admin.site.site_title = "Educap Admin Panel"
+admin.site.index_title = "Bienvenido al panel administrativo de Educap"
 
-class UserAdmin(UserAdmin):
+
+class UserAdmin(BaseUserAdmin):
     fieldsets = (
         (None, {'fields': ('email', 'password', 'first_name')}),
         ('Permissions', {'fields': (
