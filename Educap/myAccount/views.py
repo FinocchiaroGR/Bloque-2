@@ -4,6 +4,7 @@ from django.shortcuts import redirect, render
 from accounts.models import *
 from .forms import *
 import logging
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
@@ -31,7 +32,7 @@ def studentCreate(request):
             studentFormSave.user = userFormSave
             # Guardamos el estudiante
             studentFormSave.save()
-            return redirect('login')
+            return render(request, "myAccount/sucessfulStudentCreate.html")
         else:
             logging.error("Es invalido")
             return render(request, "myAccount/studentCreate.html", {
@@ -42,3 +43,23 @@ def studentCreate(request):
         "studentForm": StudentForm(prefix='student'),
         "userForm": UserForm(prefix='user')
     })
+
+
+@login_required(login_url="login")
+def studentRead(request):
+    return
+
+
+@login_required(login_url="login")
+def studentUpdate(request):
+    return
+
+
+@login_required(login_url="login")
+def studentDelete(request):
+    return
+
+
+@login_required(login_url="login")
+def myAccount(request):
+    return

@@ -6,5 +6,9 @@ from . import views
 app_name = "myAccount"
 
 urlpatterns = [
-    path('registroEstudiante/', views.studentCreate, name="studentCreate"),
+    path('', views.myAccount, name="myAccount"),
+    path('Registro/', views.studentCreate, name="studentCreate"),
+    path('Modificar/', views.studentUpdate, name="studentUpdate"),
+    path('Información/', views.studentRead, name="studentRead"),
+    path('Baja', views.studentDelete, name="studentDelete"),
 ]
