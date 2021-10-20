@@ -34,11 +34,11 @@ def studentCreate(request):
             return redirect('login')
         else:
             logging.error("Es invalido")
-            return render(request, "myAccount/userCreate.html", {
+            return render(request, "myAccount/studentCreate.html", {
                 "studentForm": studentFormRequest,
                 "userForm": userFormRequest
             })
-    return render(request, "myAccount/userCreate.html", {
+    return render(request, "myAccount/studentCreate.html", {
         "studentForm": StudentForm(prefix='student'),
         "userForm": UserForm(prefix='user')
     })
