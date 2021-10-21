@@ -13,7 +13,8 @@ class UserForm(UserCreationForm):
 class userFormChange(UserChangeForm):
     class Meta:
         model = UserModel
-        fields = ('email',)
+        exclude = '__all__'
+        fields = ('first_name', 'last_name',)
 
 
 class StudentForm(ModelForm):
