@@ -16,7 +16,7 @@ class AlphabetFilter(admin.SimpleListFilter):
             return queryset.filter(Nombre__startswith=self.value())
 
 class CategoriaAdmin(admin.ModelAdmin):
-    list_display = ('Nombre','Descripción','FechaCreada')
+    list_display = ('pk','Nombre','Descripción','FechaCreada')
     list_filter = (AlphabetFilter, 'FechaCreada')
     ordering =('Nombre',)
 
