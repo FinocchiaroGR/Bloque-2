@@ -4,7 +4,7 @@
 {% block body %}
 
 <head>
-    <title>Registro de estudiantes</title>
+    <title>Categorías</title>
 </head>
 
 <div class="container">
@@ -12,18 +12,31 @@
         <div class="row">
             <div class="col-12">
                 <h1 class="display-4 mb-3">
-                    Ejemplo
+                    Categorías
                     <span class="material-icons-outlined align-middle blueIcons" style="font-size: 48px;">
-                        account_circle
+                        menu_book
                     </span>
                 </h1>
             </div>
         </div>
         <hr>
         <div class="row">
-            <div class="col">
+            {% for catalog in catalogs %}
+                <div class="col-6">
+                
+                    <a href=#>
+                        <h2>{{catalog.Nombre}}</h2>
+                    </a>
+                
+                </div>
+            
+            
+                <div class="col-6">
 
-            </div>
+                    <h2>{{catalog.Descripción}}</h2>
+                
+                </div>
+            {% endfor %}
         </div>
     </div>
 </div>
