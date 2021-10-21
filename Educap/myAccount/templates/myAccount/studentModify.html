@@ -12,20 +12,38 @@
         <div class="row">
             <div class="col-12">
                 <h1 class="display-4 mb-3">
-                    Titulo
-                    <span class="material-icons-outlined align-bottom" style="font-size: 48px; color: tomato;">
-                        thumb_up
+                    Modificar información personal
+                    <span class="material-icons-outlined align-middle redIcons " style="font-size: 48px;">
+                        edit
                     </span>
                 </h1>
             </div>
         </div>
         <hr>
         <div class="row">
-            <div class="col">
+            <div class="col-12">
+                <form action="{% url 'myAccount:studentUpdate' %}" method="POST">
+                    {% csrf_token %}
 
+                    <div class="form-row">
+                        <div class="form-group col-md-2">
+                            {{studentForm.edad|as_crispy_field}}
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            {{userForm.first_name|as_crispy_field}}
+                        </div>
+                        <div class="form-group col-md-6">
+                            {{userForm.last_name|as_crispy_field}}
+                        </div>
+                    </div>
+                    {{userForm.errors}}
+                    {{studentForm.errors}}
+                    <button type="submit" class="btn btn-primary float-right mr-3">Registrar</button>
+                </form>
             </div>
         </div>
     </div>
 </div>
-<script src="{% static 'cuentas/slides.js' %}"></script>
 {% endblock %}

@@ -12,20 +12,53 @@
         <div class="row">
             <div class="col-12">
                 <h1 class="display-4 mb-3">
-                    Titulo
-                    <span class="material-icons-outlined align-bottom" style="font-size: 48px; color: tomato;">
-                        thumb_up
+                    Mi información personal
+                    <span class="material-icons-outlined align-middle blueIcons" style="font-size: 48px;">
+                        account_circle
                     </span>
                 </h1>
             </div>
         </div>
         <hr>
-        <div class="row">
-            <div class="col">
-
+        <div class="row my-auto justify-content-between">
+            <div class="col-lg-6">
+                <h4 class="align-middle">Nombre:</h4>
+                <label class="text-muted user-select-none">{{ user.first_name }} {{ user.last_name }}</label>
+            </div>
+            <div class="col-lg-4 my-auto">
+                <a href="{% url 'myAccount:studentUpdate' %}" class="btn btn-secondary float-right">
+                    Modificar información
+                </a>
             </div>
         </div>
+        <hr>
+        <div class="row justify-content-between">
+            <div class="col-lg-6">
+                <h4>Edad:</h4>
+                <label class="text-muted user-select-none">{{ student.edad }}</label>
+            </div>
+            <div class="col-lg-4 my-auto">
+            </div>
+        </div>
+        <hr>
+        <div class="row justify-content-between">
+            <div class="col-lg-6">
+                <h4>Correo electronico:</h4>
+                <label class="text-muted user-select-none">{{ user }}</label>
+            </div>
+        </div>
+        <hr>
+        <div class="row justify-content-between">
+            <div class="col-lg-6">
+                <h4>Contraseña:</h4>
+                <label class="text-muted user-select-none">**************</label>
+            </div>
+            <div class="col-lg-4 my-auto">
+                <a href="{% url 'password_change' %}" class="btn btn-primary float-right">Cambiar
+                    contraseña</a>
+            </div>
+        </div>
+        <hr>
     </div>
 </div>
-<script src="{% static 'cuentas/slides.js' %}"></script>
 {% endblock %}

@@ -12,20 +12,56 @@
         <div class="row">
             <div class="col-12">
                 <h1 class="display-4 mb-3">
-                    Titulo
-                    <span class="material-icons-outlined align-bottom" style="font-size: 48px; color: tomato;">
-                        thumb_up
+                    Mi cuenta
+                    <span class="material-icons-outlined align-middle blueIcons" style="font-size: 48px;">
+                        account_circle
                     </span>
                 </h1>
             </div>
         </div>
         <hr>
-        <div class="row">
-            <div class="col">
+        <div class="row mb-5">
+            <div class="col-md-4 text-center">
+                <a href="{% url 'myAccount:studentRead' %}" class="btn customBtn rounded shadow-lg h-100">
+                    <h4>
+                        Mis datos personales
+                    </h4>
+                    <span class="material-icons-outlined blueIcons" style="font-size: 48px;">
+                        contact_mail
+                    </span>
+                    <small class="form-text text-muted font-weight-bold">
+                        Mi información personal de la cuenta Educap
+                    </small>
+                </a>
+            </div>
+            <div class="col-md-4 mt-5 mt-md-0 text-center">
+                <a href="" class="btn customBtn rounded shadow-lg h-100">
+                    <h4>
+                        Mis leccciones
+                    </h4>
+                    <span class="material-icons-outlined blueIcons" style="font-size: 48px;">
+                        menu_book
+                    </span>
+                    <small class="form-text text-muted font-weight-bold">
+                        Listado todas las lecciones que sigues
+                    </small>
+                </a>
 
+            </div>
+            <div class="col-md-4 mt-5 mt-md-0 text-center">
+                <a href="" class="btn customBtn rounded shadow-lg h-100">
+                    <h4>
+                        Material descargado
+                    </h4>
+                    <span class="material-icons-outlined blueIcons" style="font-size: 48px;">
+                        cloud_download
+                    </span>
+                    <small class="form-text text-muted font-weight-bold">
+                        Listado de todos tus materiales descargados
+                    </small>
+                </a>
             </div>
         </div>
     </div>
 </div>
-<script src="{% static 'cuentas/slides.js' %}"></script>
 {% endblock %}
