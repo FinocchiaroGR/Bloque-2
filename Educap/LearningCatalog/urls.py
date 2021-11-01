@@ -6,5 +6,5 @@ from . import views
 app_name = "LearningCatalog"
 
 urlpatterns = [
-    path('', views.LearningCatalog, name='LearningCatalog')
+    path('Categorias', views.primaryCategory, name='primaryCategory')
 ]

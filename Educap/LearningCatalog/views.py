@@ -5,9 +5,10 @@ from LearningCatalog.models import Categoria
 
 # Create your views here.
 
-def LearningCatalog(request):
-    
-    return render(request, "LearningCatalog/primaryCatalog.html",{
+
+def primaryCategory(request):
+
+    return render(request, "LearningCatalog/primaryCategory.html", {
         "catalogs": Categoria.objects.all(),
-        
+
     })

@@ -22,20 +22,24 @@
         <hr>
         <div class="row">
             {% for catalog in catalogs %}
-                <div class="col-6">
-                
-                    <a href=#>
-                        <h2>{{catalog.Nombre}}</h2>
-                    </a>
-                
-                </div>
-            
-            
-                <div class="col-6">
+            {% if not catalog.subCategoria %}
+            <div class="col-6">
 
-                    <h2>{{catalog.Descripción}}</h2>
-                
-                </div>
+                <a href=#>
+                    <h2>{{catalog.nombre}}</h2>
+                </a>
+
+            </div>
+
+
+            <div class="col-6">
+
+                <h2>{{catalog.descripcion}}</h2>
+                <p>Si tiene</p>
+
+            </div>
+            {% else %}
+            {% endif %}
             {% endfor %}
         </div>
     </div>

@@ -10,11 +10,11 @@ FILETYPES = [
 
 
 class Categoria(models.Model):
-    nombre = models.CharField(max_length=30)
-    descripción = models.CharField(max_length=100)
-    fechaCreada = models.DateTimeField(auto_now_add=True)
-    subCategoria = models.ForeignKey(
-        'self', blank=True, null=True, on_delete=models.CASCADE)
+    nombre = models.CharField("Nombre", max_length=30)
+    descripcion = models.CharField("Descripción", max_length=100)
+    fechaCreada = models.DateTimeField("Fecha de creación", auto_now_add=True)
+    categoriaPadre = models.ForeignKey(
+        'self', blank=True, null=True, on_delete=CASCADE, verbose_name="Categoria perteneciente")
 
     def __str__(self):
         return f"{self.pk} {self.nombre}"
@@ -26,8 +26,12 @@ class Leccion(models.Model):
     imagen = models.ImageField(upload_to='uploads/lessons/img')
     fecha = models.DateField(
         "Fecha de creación", auto_now=False, auto_now_add=True)
-    aprobacion = models.BooleanField("Aprobación")
+    aprobacion = models.BooleanField("Aprobación", default=False)
     category = models.ForeignKey(Categoria, on_delete=CASCADE)
+
+    class Meta:
+        verbose_name = ("Lección")
+        verbose_name_plural = ("Lecciones")
 
 
 class Archivo(models.Model):

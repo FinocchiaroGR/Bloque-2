@@ -18,9 +18,15 @@ class AlphabetFilter(admin.SimpleListFilter):
 
 
 class CategoriaAdmin(admin.ModelAdmin):
-    list_display = ('pk', 'nombre', 'descripción', 'fechaCreada')
-    list_filter = (AlphabetFilter, 'fechaCreada')
+    list_display = ('nombre', 'pk', 'descripcion',
+                    'fechaCreada', 'getCategoria')
+    list_filter = ('fechaCreada',)
+    search_fields = ['nombre', 'fechaCreada']
     ordering = ('nombre',)
+
+    @admin.display(description='categoriaPadre')
+    def getCategoria(self, obj):
+        return obj.categoriaPadre
 
 
 class ArchivoAdminInline(admin.TabularInline):
@@ -33,6 +39,9 @@ class VideoAdminInline(admin.TabularInline):
 
 class LeccionAdmin(admin.ModelAdmin):
     inlines = (ArchivoAdminInline, VideoAdminInline)
+    list_display = ('titulo', 'pk', 'descripcion', 'fecha', 'aprobacion')
+    search_fields = ['titulo', ]
+    list_filter = ('fecha', 'aprobacion')
 
 
 admin.site.register(Categoria, CategoriaAdmin)
