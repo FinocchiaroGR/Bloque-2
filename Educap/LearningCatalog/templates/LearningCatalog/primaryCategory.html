@@ -23,20 +23,20 @@
         <div class="row">
             {% for catalog in catalogs %}
             {% if not catalog.subCategoria %}
-            <div class="col-6">
-
-                <a href=#>
-                    <h2>{{catalog.nombre}}</h2>
-                </a>
-
-            </div>
-
-
-            <div class="col-6">
-
-                <h2>{{catalog.descripcion}}</h2>
-                <p>Si tiene</p>
-
+            <div class="col-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="{{catalog.imagen.url}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{catalog.nombre}}</h5>
+                        <p class="card-text">{{catalog.descripcion}}</p>
+                        <a href="#" class="btn btn-primary">
+                            Ver subcategorias
+                            <span class="material-icons-outlined align-middle">
+                                arrow_forward
+                            </span>
+                        </a>
+                    </div>
+                </div>
             </div>
             {% else %}
             {% endif %}

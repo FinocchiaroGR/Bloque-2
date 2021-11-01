@@ -146,3 +146,7 @@ LOGIN_REDIRECT_URL = "login"
 LOGOUT_REDIRECT_URL = "login"
 EMAIL_HOST = "localhost"
 EMAIL_PORT = 1025
+
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = 'media/'

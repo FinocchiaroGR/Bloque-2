@@ -12,6 +12,7 @@ FILETYPES = [
 class Categoria(models.Model):
     nombre = models.CharField("Nombre", max_length=30)
     descripcion = models.CharField("Descripción", max_length=100)
+    imagen = models.ImageField("Imagen", upload_to='uploads/categories/img')
     fechaCreada = models.DateTimeField("Fecha de creación", auto_now_add=True)
     categoriaPadre = models.ForeignKey(
         'self', blank=True, null=True, on_delete=CASCADE, verbose_name="Categoria perteneciente")
