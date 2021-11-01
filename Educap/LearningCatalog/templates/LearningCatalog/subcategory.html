@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-12">
                 <h1 class="display-4 mb-3">
-                    Categorías
+                    {{category.nombre}}
                     <span class="material-icons-outlined align-middle blueIcons" style="font-size: 48px;">
                         menu_book
                     </span>
@@ -21,16 +21,15 @@
         </div>
         <hr>
         <div class="row">
-            {% for category in categories %}
-            {% if not category.categoriaPadre %}
+            {% for subCategory in subCategories %}
             <div class="col-lg-4 mt-3">
                 <div class="card" style="width: 18rem;">
-                    <img src="{{category.imagen.url}}" class="card-img-top" alt="...">
+                    <img src="{{subCategory.imagen.url}}" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">{{category.nombre}}</h5>
-                        <p class="card-text">{{category.descripcion}}</p>
-                        <a href="{% url 'LearningCatalog:subCategories' category.pk %}" class="btn btn-primary">
-                            Ver subcategorias
+                        <h5 class="card-title">{{subCategory.nombre}}</h5>
+                        <p class="card-text">{{subCategory.descripcion}}</p>
+                        <a href="#" class="btn btn-primary">
+                            Ver contenido
                             <span class="material-icons-outlined align-middle">
                                 arrow_forward
                             </span>
@@ -38,8 +37,8 @@
                     </div>
                 </div>
             </div>
-            {% else %}
-            {% endif %}
+            {% empty %}
+            no hay
             {% endfor %}
         </div>
     </div>
