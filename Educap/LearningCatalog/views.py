@@ -21,3 +21,12 @@ def subCategories(request, pk):
         "category": Categoria.objects.get(pk=pk),
         "subCategories": subCategory,
     })
+
+
+def searchCategory(request):
+    if request.method == "POST":
+        search = request.POST.get('searchBar')
+        logging.error(search)
+        return render(request, "LearningCatalog/primaryCategory.html", {
+            "categories": Categoria.objects.filter(nombre__icontains=search),
+        })

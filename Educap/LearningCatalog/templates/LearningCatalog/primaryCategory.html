@@ -21,6 +21,25 @@
         </div>
         <hr>
         <div class="row">
+            <div class="col-12">
+                <form action="{% url 'LearningCatalog:searchCategory' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">
+                                Buscar
+                                <span class="material-icons-outlined float-right ml-2">
+                                    search
+                                </span>
+                            </span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default" id="searchBar" name="searchBar">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
             {% for category in categories %}
             {% if not category.categoriaPadre %}
             <div class="col-lg-4 mt-3">
