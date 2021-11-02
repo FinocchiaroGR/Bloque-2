@@ -37,3 +37,4 @@ class UserAdmin(BaseUserAdmin):
 admin.site.register(UserModel, UserAdmin)
 admin.site.register(MiembroStaff)
 admin.site.register(Estudiante)
+admin.site.register(Estudiante_Lecciones)

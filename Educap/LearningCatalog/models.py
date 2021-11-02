@@ -1,19 +1,24 @@
 from django.db import models
 from django.db.models.deletion import CASCADE
 
-# Create your models here.
+# Creacion de modelos.
 
+# Tipos de archivos para determinar cual icono utilizaremos en la interfaz
 FILETYPES = [
     ('PDF', 'Archivo PDF'),
     ('IMG', 'Imagen'),
 ]
 
+# Clase de modelos para crear las tablas en la base de datos
+
 
 class Categoria(models.Model):
+    # Todos los atributos vienen de la importacion de models y son clases predefinidas de django para la creacion de tablas
     nombre = models.CharField("Nombre", max_length=30)
     descripcion = models.TextField("Descripción", max_length=100)
     imagen = models.ImageField("Imagen", upload_to='uploads/categories/img')
     fechaCreada = models.DateTimeField("Fecha de creación", auto_now_add=True)
+    # Atributo que se refiere a la misma clase para poder tener nesting de categorias
     categoriaPadre = models.ForeignKey(
         'self', blank=True, null=True, on_delete=CASCADE, verbose_name="Categoria perteneciente")
 
@@ -30,6 +35,7 @@ class Leccion(models.Model):
     aprobacion = models.BooleanField("Aprobación", default=False)
     category = models.ForeignKey(Categoria, on_delete=CASCADE)
 
+    # Verbose name y verbose name plural para cambiar el nombre de la seccion en el panel administrativo
     class Meta:
         verbose_name = ("Lección")
         verbose_name_plural = ("Lecciones")

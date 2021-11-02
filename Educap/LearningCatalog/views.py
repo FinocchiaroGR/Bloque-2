@@ -6,8 +6,9 @@ import logging
 
 
 def primaryCategory(request):
-
+    # Respuesta HTTPS donde django procesa el html y presenta la ingerfaz
     return render(request, "LearningCatalog/primaryCategory.html", {
+        # Contexto para procesar la interfaz donde se realiza un query a la base de datos y obtenemos todas las categorias
         "categories": Categoria.objects.all(),
 
     })
