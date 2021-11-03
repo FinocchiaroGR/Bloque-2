@@ -23,5 +23,7 @@ urlpatterns = [
     path('', include('accounts.urls')),
     path('miCuenta/', include('myAccount.urls')),
     path('Catalogo/', include('LearningCatalog.urls')),
-    path('', include('APILessons.urls'))
+    path('API', include('APILessons.urls')),
+    path('API', include('APIAccounts.urls')),
+    path('API', include('APICategory.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

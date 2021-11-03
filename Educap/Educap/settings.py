@@ -32,6 +32,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'APIAccounts',
+    'APICategory',
     'APILessons',
     'LearningCatalog',
     'crispy_forms',
