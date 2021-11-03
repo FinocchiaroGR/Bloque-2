@@ -28,6 +28,6 @@ def searchCategory(request):
     if request.method == "POST":
         search = request.POST.get('searchBar')
         logging.error(search)
-        return render(request, "LearningCatalog/primaryCategory.html", {
+        return render(request, "LearningCatalog/searchBar.html", {
             "categories": Categoria.objects.filter(nombre__icontains=search),
         })

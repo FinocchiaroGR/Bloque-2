@@ -33,7 +33,8 @@ class Leccion(models.Model):
     fecha = models.DateField(
         "Fecha de creación", auto_now=False, auto_now_add=True)
     aprobacion = models.BooleanField("Aprobación", default=False)
-    category = models.ForeignKey(Categoria, on_delete=CASCADE)
+    category = models.ForeignKey(
+        Categoria, on_delete=CASCADE, verbose_name="Categoria")
 
     # Verbose name y verbose name plural para cambiar el nombre de la seccion en el panel administrativo
     class Meta:
