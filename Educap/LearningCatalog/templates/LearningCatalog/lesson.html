@@ -5,6 +5,9 @@
 
 <head>
     <title>Categorías</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+      <link rel="stylesheet" href="{% static 'LearningCatalog/css/master.css' %}">
 </head>
 
 <div class="container">
@@ -31,14 +34,59 @@
         <div class="row">
             <div class="col-md-6">
                 <!-- imagen -->
-                <img src="" alt="">
+                <img src="{{lesson.imagen.url}}" alt="">
             </div>
             <div class="col-md-6">
                 <!-- Descripcion -->
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea explicabo nulla error, placeat molestiae
-                    provident illo deleniti suscipit, nesciunt deserunt obcaecati praesentium expedita possimus
-                    asperiores tempore! Voluptate sunt ipsam inventore?</p>
+                <p>{{lesson.descripcion}}</p>
             </div>
+        </div>
+        <hr>
+        <h1 class="display-4 mb-3">Contenido</h1>
+      
+        <div class="row">
+            {% for archivo in files %}
+           
+                
+            
+            <div class="col-md-6">
+                <!-- imagen -->
+                {% if archivo.lipo == 'PDF' %}
+
+                    
+                    <a href="{{archivo.path.url}}" download><span class="align-bottom material-icons">
+                        picture_as_pdf
+                    </span>{{archivo.titulo}}</a>
+                {% elif archivo.lipo == 'IMG'%}
+                    
+                    <a href="{{archivo.path.url}}" download><span class="align-bottom material-icons">
+                        image
+                    </span>{{archivo.titulo}}</a>
+                {% endif %}
+                
+            </div>
+            <div class="col-md-6">
+                <!-- Descripcion -->
+                <p>{{archivo.descripcion}}</p>
+            </div>
+            {% endfor %}
+        </div>
+        <hr>
+        <h1 class="display-4 mb-3">Videos</h1>
+
+        <div class="row">
+            {% for video in videos %}
+
+                
+            
+            <div class="col-md-6">
+                <iframe src="{{ video.link }}" width="420" height="315" title="YouTube video player" frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="col-md-6">
+                {{video.descripcion}}
+            </div>
+            {% endfor %}
         </div>
     </div>
 </div>
