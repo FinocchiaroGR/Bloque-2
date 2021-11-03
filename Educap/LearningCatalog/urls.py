@@ -11,7 +11,7 @@ urlpatterns = [
     path('Busqueda/Categorias', views.searchCategory, name="searchCategory"),
     path('Lecciones', views.listLesson, name="listLesson"),
     path('Lecciones/<int:pk>', views.readLesson, name="readLesson"),
-    path('Buscar/Lecciones', views.searchLesson, name="searchLesson"),
-    path('Categoria/Lecciones', views.filterLessonsByCategory,
+    path('Busqueda/Lecciones', views.searchLesson, name="searchLesson"),
+    path('Categoria/Lecciones/<int:pk>', views.filterLessonsByCategory,
          name="filterLessonsByCategory"),
 ]

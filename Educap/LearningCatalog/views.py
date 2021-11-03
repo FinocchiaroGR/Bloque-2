@@ -28,7 +28,6 @@ def subCategories(request, pk):
 def searchCategory(request):
     if request.method == "POST":
         search = request.POST.get('searchBar')
-        logging.error(search)
         return render(request, "LearningCatalog/searchBar.html", {
             "categories": Categoria.objects.filter(nombre__icontains=search),
         })
@@ -51,15 +50,14 @@ def readLesson(request, pk):
 def searchLesson(request):
     if request.method == "POST":
         search = request.POST.get('searchBar')
-        logging.error(search)
-        return render(request, "LearningCatalog/searchBar.html", {
-            "categories": Leccion.objects.filter(nombre__icontains=search),
+        return render(request, "LearningCatalog/lessonList.html", {
+            "lessons": Leccion.objects.filter(titulo__icontains=search),
         })
 
 
 def filterLessonsByCategory(request, pk):
     subCategory = Categoria.objects.get(pk=pk)
-    lessons = Leccion.objects.filter(subCategory=subCategory)
+    lessons = Leccion.objects.filter(category=subCategory)
     return render(request, "LearningCatalog/lessonList.html", {
         "lessons": lessons
     })

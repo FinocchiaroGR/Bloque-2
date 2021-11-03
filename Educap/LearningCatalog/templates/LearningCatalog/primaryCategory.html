@@ -14,7 +14,7 @@
                 <h1 class="display-4 mb-3">
                     Categorías
                     <span class="material-icons-outlined align-middle blueIcons" style="font-size: 48px;">
-                        menu_book
+                        category
                     </span>
                 </h1>
             </div>
@@ -59,6 +59,10 @@
             </div>
             {% else %}
             {% endif %}
+            {% empty %}
+            <div class="col">
+                <p>No hay categorias</p>
+            </div>
             {% endfor %}
         </div>
     </div>

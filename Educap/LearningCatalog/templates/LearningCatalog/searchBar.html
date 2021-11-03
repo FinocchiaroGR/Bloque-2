@@ -29,7 +29,7 @@
                             <span class="input-group-text" id="inputGroup-sizing-default">
                                 Buscar
                                 <span class="material-icons-outlined float-right ml-2">
-                                    search
+                                    category
                                 </span>
                             </span>
                         </div>
@@ -55,6 +55,10 @@
                         </a>
                     </div>
                 </div>
+            </div>
+            {% empty %}
+            <div class="col">
+                <p>No hay categorias</p>
             </div>
             {% endfor %}
         </div>

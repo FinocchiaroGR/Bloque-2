@@ -14,7 +14,7 @@
                 <h1 class="display-4 mb-3">
                     {{category.nombre}}
                     <span class="material-icons-outlined align-middle blueIcons" style="font-size: 48px;">
-                        menu_book
+                        category
                     </span>
                 </h1>
             </div>
@@ -28,7 +28,8 @@
                     <div class="card-body">
                         <h5 class="card-title">{{subCategory.nombre}}</h5>
                         <p class="card-text">{{subCategory.descripcion}}</p>
-                        <a href="#" class="btn btn-primary">
+                        <a href="{% url 'LearningCatalog:filterLessonsByCategory' subCategory.pk %}"
+                            class="btn btn-primary">
                             Ver contenido
                             <span class="material-icons-outlined align-middle">
                                 arrow_forward
@@ -38,7 +39,9 @@
                 </div>
             </div>
             {% empty %}
-            no hay
+            <div class="col">
+                <p>No hay categorias</p>
+            </div>
             {% endfor %}
         </div>
     </div>
