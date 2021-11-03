@@ -32,12 +32,12 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'accounts',
     'APIAccounts',
     'APICategory',
     'APILessons',
     'LearningCatalog',
     'crispy_forms',
-    'accounts',
     'myAccount',
     'django.contrib.admin',
     'django.contrib.auth',

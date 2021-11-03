@@ -2,6 +2,7 @@ from django.shortcuts import render
 from . import urls
 from LearningCatalog.models import Categoria
 import logging
+from .models import *
 # Create your views here.
 
 
@@ -31,3 +32,34 @@ def searchCategory(request):
         return render(request, "LearningCatalog/searchBar.html", {
             "categories": Categoria.objects.filter(nombre__icontains=search),
         })
+
+
+def listLesson(request):
+    lessons = Leccion.objects.all()
+    return render(request, "LearningCatalog/lessonList.html", {
+        "lessons": lessons
+    })
+
+
+def readLesson(request, pk):
+    lesson = Leccion.objects.get(pk=pk)
+    return render(request, "LearningCatalog/lesson.html", {
+        "lesson": lesson
+    })
+
+
+def searchLesson(request):
+    if request.method == "POST":
+        search = request.POST.get('searchBar')
+        logging.error(search)
+        return render(request, "LearningCatalog/searchBar.html", {
+            "categories": Leccion.objects.filter(nombre__icontains=search),
+        })
+
+
+def filterLessonsByCategory(request, pk):
+    subCategory = Categoria.objects.get(pk=pk)
+    lessons = Leccion.objects.filter(subCategory=subCategory)
+    return render(request, "LearningCatalog/lessonList.html", {
+        "lessons": lessons
+    })

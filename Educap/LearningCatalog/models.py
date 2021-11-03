@@ -1,6 +1,6 @@
 from django.db import models
 from django.db.models.deletion import CASCADE
-
+from accounts.models import *
 # Creacion de modelos.
 
 # Tipos de archivos para determinar cual icono utilizaremos en la interfaz
