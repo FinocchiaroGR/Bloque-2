@@ -21,4 +21,17 @@
 .inline-icon {
     vertical-align: bottom;
     font-size: 18px !important;
- }
+}
+
+.btn-primary{
+    color:white ;
+    background-color: #5c8ec8;
+    border-color: #5c8ec8;
+}
+
+.files{
+
+}
+.files:hover{
+    border-color: #5c8ec8;
+}

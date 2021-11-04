@@ -39,7 +39,7 @@ class VideoAdminInline(admin.TabularInline):
 
 class LeccionAdmin(admin.ModelAdmin):
     inlines = (ArchivoAdminInline, VideoAdminInline)
-    list_display = ('titulo', 'pk', 'descripcion', 'fecha', 'aprobacion')
+    list_display = ('titulo', 'descripcion', 'fecha', 'aprobacion')
     search_fields = ['titulo', ]
     list_filter = ('fecha', 'aprobacion')
 

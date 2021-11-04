@@ -5,9 +5,8 @@
 
 <head>
     <title>Categorías</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
-      <link rel="stylesheet" href="{% static 'LearningCatalog/css/master.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'LearningCatalog/css/master.css' %}">
 </head>
 
 <div class="container">
@@ -21,7 +20,7 @@
                     </span>
                 </h1>
             </div>
-            <div class="col-md-6 text-right my-auto">
+            <div class="col-md-6 text-md-right my-auto">
                 <button class="btn btn-primary">
                     Seguir
                     <span class="material-icons-outlined align-middle">
@@ -34,7 +33,7 @@
         <div class="row">
             <div class="col-md-6">
                 <!-- imagen -->
-                <img src="{{lesson.imagen.url}}" alt="">
+                <img src="{{lesson.imagen.url}}" alt="" style="max-width:100%">
             </div>
             <div class="col-md-6">
                 <!-- Descripcion -->
@@ -43,47 +42,46 @@
         </div>
         <hr>
         <h1 class="display-4 mb-3">Contenido</h1>
-      
+
         <div class="row">
             {% for archivo in files %}
-           
-                
-            
-            <div class="col-md-6">
+            <div class="col-md-6 mt-5">
                 <!-- imagen -->
-                {% if archivo.lipo == 'PDF' %}
-
-                    
-                    <a href="{{archivo.path.url}}" download><span class="align-bottom material-icons">
+                <a href="{{archivo.path.url}}" class="btn customBtn rounded shadow-lg w-100 h-100 files">
+                    <h4>
+                        {{archivo.titulo}}
+                        <h4 class="blueIcons">
+                            ({{ archivo.orden }})
+                        </h4>
+                    </h4>
+                    <span class="material-icons-outlined blueIcons" style="font-size: 48px;">
+                        {% if archivo.lipo == 'PDF' %}
                         picture_as_pdf
-                    </span>{{archivo.titulo}}</a>
-                {% elif archivo.lipo == 'IMG'%}
-                    
-                    <a href="{{archivo.path.url}}" download><span class="align-bottom material-icons">
+                        {% elif archivo.lipo == 'IMG'%}
                         image
-                    </span>{{archivo.titulo}}</a>
-                {% endif %}
-                
-            </div>
-            <div class="col-md-6">
-                <!-- Descripcion -->
-                <p>{{archivo.descripcion}}</p>
+                        {% endif %}
+                    </span>
+                    <small class="form-text text-muted font-weight-bold">
+                        {{archivo.descripcion}}
+                    </small>
+                </a>
             </div>
             {% endfor %}
         </div>
         <hr>
         <h1 class="display-4 mb-3">Videos</h1>
-
         <div class="row">
             {% for video in videos %}
-
-                
-            
-            <div class="col-md-6">
-                <iframe src="{{ video.link }}" width="420" height="315" title="YouTube video player" frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="col-12">
+                <h4>{{ video.titulo }}</h4>
             </div>
-            <div class="col-md-6">
+            <div class="col-lg-6">
+                <iframe src="{{ video.link }}" width="100%" height="100%" title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <div class="col-lg-6">
                 {{video.descripcion}}
             </div>
             {% endfor %}

@@ -42,7 +42,7 @@ def listLesson(request):
 
 def readLesson(request, pk):
     lesson = Leccion.objects.get(pk=pk)
-    files = Archivo.objects.filter(leccion=pk)
+    files = Archivo.objects.filter(leccion=pk).order_by('orden')
     videos = Video.objects.filter(leccion=pk)
     return render(request, "LearningCatalog/lesson.html", {
         "lesson": lesson,
