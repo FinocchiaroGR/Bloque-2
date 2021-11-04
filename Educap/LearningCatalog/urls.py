@@ -16,4 +16,7 @@ urlpatterns = [
     path('Busqueda/Lecciones', views.searchLesson, name="searchLesson"),
     path('Categoria/Lecciones/<int:pk>', views.filterLessonsByCategory,
          name="filterLessonsByCategory"),
+    path('Lecciones/FollowLesson',
+         views.followLesson, name="followLesson"),
+    path('CheckFollow/', views.checkFollow, name="checkFollow")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

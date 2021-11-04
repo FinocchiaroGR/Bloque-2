@@ -1,8 +1,11 @@
+from django.http.response import HttpResponse
 from django.shortcuts import render
 from . import urls
 from LearningCatalog.models import Categoria
 import logging
 from .models import *
+from accounts.models import *
+import json
 # Create your views here.
 
 
@@ -44,10 +47,17 @@ def readLesson(request, pk):
     lesson = Leccion.objects.get(pk=pk)
     files = Archivo.objects.filter(leccion=pk).order_by('orden')
     videos = Video.objects.filter(leccion=pk)
+    estudiante = Estudiante.objects.get(user=request.user)
+    leccion = Leccion.objects.get(pk=pk)
+    if Estudiante_Lecciones.objects.filter(estudiante=estudiante, leccion=leccion).exists():
+        follow = True
+    else:
+        follow = False
     return render(request, "LearningCatalog/lesson.html", {
         "lesson": lesson,
         "files": files,
-        "videos": videos
+        "videos": videos,
+        "follow": follow
     })
 
 
@@ -65,3 +75,30 @@ def filterLessonsByCategory(request, pk):
     return render(request, "LearningCatalog/lessonList.html", {
         "lessons": lessons
     })
+
+
+def followLesson(request):
+    if request.is_ajax():
+        if request.method == "POST":
+            jsonObject = json.load(request)['jsonBody']
+            pk = jsonObject["pk"]
+            estudiante = Estudiante.objects.get(user=request.user)
+            leccion = Leccion.objects.get(pk=pk)
+            if Estudiante_Lecciones.objects.filter(estudiante=estudiante, leccion=leccion).exists():
+                newUnfollow = Estudiante_Lecciones.objects.get(
+                    estudiante=estudiante,
+                    leccion=leccion
+                )
+                newUnfollow.delete()
+                return HttpResponse("follow")
+            else:
+                newFollow = Estudiante_Lecciones(
+                    estudiante=estudiante,
+                    leccion=leccion
+                )
+                newFollow.save()
+                return HttpResponse("unFollow")
+
+
+def checkFollow(request):
+    return HttpResponse()
