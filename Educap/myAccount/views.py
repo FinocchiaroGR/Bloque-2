@@ -112,3 +112,12 @@ def myAccount(request):
     return render(request, "myAccount/myAccount.html", {
 
     })
+
+
+def followedLessons(request):
+    estudiante = Estudiante.objects.get(user=request.user)
+    estudianteLecciones = Estudiante_Lecciones.objects.filter(
+        estudiante=estudiante)
+    return render(request, "myAccount/lessonsList.html", {
+        "lessons": estudianteLecciones
+    })
