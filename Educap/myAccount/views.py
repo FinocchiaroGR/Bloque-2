@@ -135,4 +135,4 @@ def loginRedirect(request):
     if request.user.is_staff:
         return redirect('admin:index')
     else:
-        return redirect('Learning:listLesson')
+        return redirect('LearningCatalog:listLesson')

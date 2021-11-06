@@ -22,6 +22,15 @@
             </div>
             <div class="col-md-6 text-md-right my-auto">
                 <div id="contenedor">
+                    {% if request.user.is_anonymous %}
+                    <a class="btn btn-primary" href="{% url 'login' %}">
+                        Seguir
+                        <span class="material-icons-outlined align-middle">
+                            bookmark
+                        </span>
+                    </a>
+                    {% else %}
+
                     {% if follow %}
                     <button class="btn btn-danger" onclick="followLesson({{lesson.pk}})">
                         Dejar de seguir
@@ -36,6 +45,7 @@
                             bookmark
                         </span>
                     </button>
+                    {% endif %}
                     {% endif %}
                 </div>
             </div>
@@ -58,7 +68,7 @@
             {% for archivo in files %}
             <div class="col-md-6 mt-5">
                 <!-- imagen -->
-                <a href="{{archivo.path.url}}" class="btn customBtn rounded shadow-lg w-100 h-100 files">
+                <a href="{{archivo.path.url}}" class="btn customBtn rounded shadow-lg w-100 h-100 files linkVisited">
                     <h4>
                         {{archivo.titulo}}
                         <h4 class="blueIcons">

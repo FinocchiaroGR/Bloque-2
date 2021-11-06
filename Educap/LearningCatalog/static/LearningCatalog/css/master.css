@@ -35,3 +35,7 @@
 .files:hover{
     border-color: #5c8ec8;
 }
+
+.a.blueIcons:visited {
+    color: red!important;
+}
