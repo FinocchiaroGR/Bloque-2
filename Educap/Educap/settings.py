@@ -145,7 +145,7 @@ AUTH_USER_MODEL = 'accounts.UserModel'
 
 # Cambio de urls para la autenticacion en el sistema
 
-LOGIN_REDIRECT_URL = "login"
+LOGIN_REDIRECT_URL = "myAccount:loginRedirect"
 LOGOUT_REDIRECT_URL = "login"
 EMAIL_HOST = "localhost"
 EMAIL_PORT = 1025

@@ -11,5 +11,6 @@ urlpatterns = [
     path('Modificar/', views.studentUpdate, name="studentUpdate"),
     path('Información/', views.studentRead, name="studentRead"),
     path('Baja', views.studentDelete, name="studentDelete"),
-    path('LeccionesQueSigo/', views.followedLessons, name="followedLessons")
+    path('LeccionesQueSigo/', views.followedLessons, name="followedLessons"),
+    path('Redirect/', views.loginRedirect, name="loginRedirect")
 ]

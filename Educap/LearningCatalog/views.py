@@ -47,17 +47,23 @@ def readLesson(request, pk):
     lesson = Leccion.objects.get(pk=pk)
     files = Archivo.objects.filter(leccion=pk).order_by('orden')
     videos = Video.objects.filter(leccion=pk)
-    estudiante = Estudiante.objects.get(user=request.user)
     leccion = Leccion.objects.get(pk=pk)
-    if Estudiante_Lecciones.objects.filter(estudiante=estudiante, leccion=leccion).exists():
-        follow = True
-    else:
+    if request.user.is_staff:
+        staffFollow = True
         follow = False
+    else:
+        staffFollow = False
+        estudiante = Estudiante.objects.get(user=request.user)
+        if Estudiante_Lecciones.objects.filter(estudiante=estudiante, leccion=leccion).exists():
+            follow = True
+        else:
+            follow = False
     return render(request, "LearningCatalog/lesson.html", {
         "lesson": lesson,
         "files": files,
         "videos": videos,
-        "follow": follow
+        "follow": follow,
+        "staffFollow": staffFollow
     })
 
 

@@ -47,6 +47,8 @@ def studentCreate(request):
 
 @login_required(login_url="login")
 def studentRead(request):
+    if request.user.is_staff:
+        return redirect('admin:index')
     # Obtenemos el objeto de usuario con request.user
     user = UserModel.objects.get(pk=request.user.pk)
     # Obtenemos el objeto de estudiante refiriendonos al usuario
@@ -109,15 +111,28 @@ def studentDelete(request):
 
 @login_required(login_url="login")
 def myAccount(request):
+    if request.user.is_staff:
+        return redirect('admin:index')
     return render(request, "myAccount/myAccount.html", {
 
     })
 
 
+@login_required(login_url="login")
 def followedLessons(request):
+    if request.user.is_staff:
+        return redirect('admin:index')
     estudiante = Estudiante.objects.get(user=request.user)
     estudianteLecciones = Estudiante_Lecciones.objects.filter(
         estudiante=estudiante)
     return render(request, "myAccount/lessonsList.html", {
         "lessons": estudianteLecciones
     })
+
+
+@login_required(login_url="login")
+def loginRedirect(request):
+    if request.user.is_staff:
+        return redirect('admin:index')
+    else:
+        return redirect('Learning:listLesson')
