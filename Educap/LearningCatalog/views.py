@@ -62,7 +62,7 @@ def readLesson(request, pk):
         arrLinks = []
         arrLinks = i.split('/')
         
-        videoCode.append(arrLinks[4])
+        videoCode.append(arrLinks[3])
     
 
     vidLists=list(zip(arrVidT, arrVidD, videoCode))
