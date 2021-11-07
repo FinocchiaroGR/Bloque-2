@@ -7,6 +7,10 @@ from accounts.models import *
 FILETYPES = [
     ('PDF', 'Archivo PDF'),
     ('IMG', 'Imagen'),
+    ('DOC', 'Archivo Word'),
+    ('PPX', 'PowerPoint'),
+    ('XLX', 'Archivo Excel'),
+    ('ANY', 'Archivo')
 ]
 
 # Clase de modelos para crear las tablas en la base de datos
