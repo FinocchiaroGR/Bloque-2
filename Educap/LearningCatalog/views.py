@@ -6,6 +6,7 @@ import logging
 from .models import *
 from accounts.models import *
 import json
+from copy import copy
 # Create your views here.
 
 
@@ -47,7 +48,30 @@ def readLesson(request, pk):
     lesson = Leccion.objects.get(pk=pk)
     files = Archivo.objects.filter(leccion=pk).order_by('orden')
     videos = Video.objects.filter(leccion=pk)
+    
+    # Convertir urls de youtube a urls de Embed
+
+
+    arrVidL=[video.link for video in videos] 
+    arrVidT=[video.titulo for video in videos] 
+    arrVidD=[video.descripcion for video in videos] 
+    
+    videoCode=[]
+    vidLists= []
+    for i in arrVidL:
+        arrLinks = []
+        arrLinks = i.split('/')
+        
+        videoCode.append(arrLinks[3])
+    
+
+    vidLists=list(zip(arrVidT, arrVidD, videoCode))
+    
+    
+    ##############################################
+
     leccion = Leccion.objects.get(pk=pk)
+
     if request.user.is_anonymous:
         follow = True
     else:
@@ -63,8 +87,10 @@ def readLesson(request, pk):
     return render(request, "LearningCatalog/lesson.html", {
         "lesson": lesson,
         "files": files,
-        "videos": videos,
         "follow": follow,
+        "vidLists": vidLists,
+        
+  
     })
 
 
