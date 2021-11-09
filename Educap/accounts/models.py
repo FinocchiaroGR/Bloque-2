@@ -1,13 +1,10 @@
 from django.db import models
-
-# Create your models here.
-from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db.models.deletion import CASCADE
 from django.db.models.expressions import F
 from django.utils.translation import ugettext_lazy as _
 from django.core.validators import MaxValueValidator
-from LearningCatalog.models import Leccion
+
 # Create your models here.
 
 ROLES = [
@@ -76,8 +73,3 @@ class MiembroStaff(models.Model):
 class Estudiante(models.Model):
     user = models.OneToOneField(UserModel, on_delete=CASCADE)
     edad = models.PositiveSmallIntegerField()
-
-
-class Estudiante_Lecciones(models.Model):
-    estudiante = models.ForeignKey(Estudiante, on_delete=CASCADE)
-    leccion = models.ForeignKey(Leccion, on_delete=CASCADE)
