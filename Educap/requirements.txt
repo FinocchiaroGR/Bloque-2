@@ -1,5 +1,0 @@
-rest_framework_simplejwt
-rest_framework
-crispy_forms
-django
-django-heroku
