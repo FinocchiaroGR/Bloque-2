@@ -15,7 +15,8 @@ admin.site.index_title = "Bienvenido al panel administrativo de Educap"
 class UserAdmin(BaseUserAdmin):
 
     fieldsets = (
-        (None, {'fields': ('email', 'password', 'first_name', 'groups')}),
+        (None, {'fields': ('email', 'password',
+         'first_name', 'last_name', 'groups')}),
         ('Permissions', {'fields': (
             'is_active',
             'is_staff',
@@ -31,7 +32,8 @@ class UserAdmin(BaseUserAdmin):
         ),
     )
     ordering = ('email',)
-    list_display = ('email', 'first_name', 'is_staff', 'last_login')
+    list_display = ('email', 'first_name', 'last_name',
+                    'is_staff', 'last_login')
     list_filter = ('is_active', 'is_staff', 'groups')
     search_fields = ('email',)
 
