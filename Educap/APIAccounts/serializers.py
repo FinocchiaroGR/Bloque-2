@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
-from rest_framework import serializers
+from rest_framework import fields, serializers
 from accounts.models import UserModel, Estudiante
 
 
@@ -40,8 +40,10 @@ class StudentRegisterSerializer(serializers.ModelSerializer):
 class getStudentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Estudiante
+        fields = '__all__'
 
 
 class getUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserModel
+        fields = ['email', 'first_name', 'last_name']
