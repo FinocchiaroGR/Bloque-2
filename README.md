@@ -6,6 +6,10 @@
 
 # virtual/Scripts/activate (Scripts - )
 
+# pip install requirements.txt
+
+# Si eso no sirve:
+
 # pip install django
 
 # pip install django-crispy-forms
