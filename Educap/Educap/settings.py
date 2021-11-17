@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-p1nr7y+=8jizau=nogae=uj1yr#$n0b=mo(=e81e56!91tyuz=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['10.0.2.2']
 
 
 # Application definition
@@ -154,3 +154,4 @@ EMAIL_PORT = 1025
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = 'media/'
+
