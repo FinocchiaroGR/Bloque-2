@@ -1,6 +1,6 @@
 from django.db import models
 from django.db.models.deletion import CASCADE
-from accounts.models import *
+from accounts.models import UserModel, Estudiante
 # Creacion de modelos.
 
 # Tipos de archivos para determinar cual icono utilizaremos en la interfaz
@@ -40,8 +40,9 @@ class Leccion(models.Model):
     aprobacion = models.BooleanField("Aprobación", default=False)
     category = models.ForeignKey(
         Categoria, on_delete=CASCADE, verbose_name="Categoria")
-
     # Verbose name y verbose name plural para cambiar el nombre de la seccion en el panel administrativo
+    created_by = models.ForeignKey(UserModel, on_delete=CASCADE)
+
     class Meta:
         verbose_name = ("Lección")
         verbose_name_plural = ("Lecciones")
@@ -60,4 +61,9 @@ class Video(models.Model):
     titulo = models.CharField(max_length=150)
     descripcion = models.TextField("Descripción", max_length=500)
     link = models.CharField(max_length=500)
+    leccion = models.ForeignKey(Leccion, on_delete=CASCADE)
+
+
+class Estudiante_Lecciones(models.Model):
+    estudiante = models.ForeignKey(Estudiante, on_delete=CASCADE)
     leccion = models.ForeignKey(Leccion, on_delete=CASCADE)

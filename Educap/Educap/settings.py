@@ -32,8 +32,10 @@ ALLOWED_HOSTS = ['10.0.2.2']
 # Application definition
 
 INSTALLED_APPS = [
-    'Index',
+    'rest_framework_simplejwt',
+    'rest_framework',
     'accounts',
+    'Index',
     'APIAccounts',
     'APICategory',
     'APILessons',
@@ -155,3 +157,11 @@ EMAIL_PORT = 1025
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = 'media/'
 
+REST_FRAMEWORK = {
+
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+
+}

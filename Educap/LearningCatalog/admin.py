@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import *
 import string
+import logging
 # Register your models here.
 
 
@@ -42,6 +43,18 @@ class LeccionAdmin(admin.ModelAdmin):
     list_display = ('titulo', 'descripcion', 'fecha', 'aprobacion')
     search_fields = ['titulo', ]
     list_filter = ('fecha', 'aprobacion')
+
+    def get_queryset(self, request):
+        # For Django < 1.6, override queryset instead of get_queryset
+        if request.user.groups.filter(name="Instructor"):
+            qs = super(LeccionAdmin, self).get_queryset(request)
+            return qs.filter(created_by=request.user)
+
+    def has_change_permission(self, request, obj=None):
+        if not obj:
+            # the changelist itself
+            return True
+        return obj.user == request.user
 
 
 admin.site.register(Categoria, CategoriaAdmin)
