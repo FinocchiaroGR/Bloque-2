@@ -17,3 +17,5 @@
 # pip install django-filter
 
 # pip install django-allauth
+
+# pip install djangorestframework-simplejwt
