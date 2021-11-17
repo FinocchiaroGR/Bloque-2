@@ -35,3 +35,13 @@ class StudentRegisterSerializer(serializers.ModelSerializer):
         instance.user = validated_data["user"]
         instance.save()
         return instance
+
+
+class getStudentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Estudiante
+
+
+class getUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserModel
