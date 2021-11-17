@@ -6,7 +6,7 @@
 
 # virtual/Scripts/activate (Scripts - )
 
-# pip install requirements.txt
+# pip install -r requirements.txt
 
 # Si eso no sirve:
 
