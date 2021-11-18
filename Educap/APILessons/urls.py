@@ -6,5 +6,6 @@ from . import views
 app_name = "APILessons"
 
 urlpatterns = [
-    path('apiTesting', views.test, name='test'),
+    path('lessons/getAll', views.GetLessonsView.as_view()),
+    path('lesson/<int:id>', views.GetLessonView.as_view()),
 ]
