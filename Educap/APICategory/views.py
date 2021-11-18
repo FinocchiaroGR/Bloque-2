@@ -11,7 +11,7 @@ from .models import *
 # Create your views here.
 
 class GetCategoriaView(APIView):
-    #permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
     def get(self, request):
         categories = Categoria.objects.all()
