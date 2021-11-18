@@ -6,5 +6,5 @@ from . import views
 app_name = "APICategory"
 
 urlpatterns = [
-
+    path('category/getAll', views.GetCategoriaView.as_view()),
 ]

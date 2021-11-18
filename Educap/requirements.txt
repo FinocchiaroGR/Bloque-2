@@ -1,0 +1,8 @@
+django
+django-crispy-forms
+djangorestframework
+markdown
+django-filter
+django-allauth
+djangorestframework-simplejwt
+django-heroku
