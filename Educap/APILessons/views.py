@@ -13,15 +13,35 @@ from LearningCatalog.models import *
 class GetLessonsView(APIView):
 
     def get(self, request):
-        categories = Leccion.objects.all()
-        serializer = getLessonsSerializer(categories, many=True)
+        lessons = Leccion.objects.all()
+        serializer = getLessonsSerializer(lessons, many=True)
         return Response(serializer.data)
 
 
 class GetLessonView(APIView):
-    permission_classes = [IsAuthenticated]
 
-    def get(self, request):
-        categories = Categoria.objects.filter(categoriaPadre=None)
-        serializer = getLessonSerializer(categories, many=True)
+    def get(self, request, id):
+        lesson = Leccion.objects.get(id=id)
+        serializer = getLessonSerializer(lesson)
+        return Response(serializer.data)
+
+
+class GetCategoryByName(APIView):
+    def get(self, request, id):
+        category = Categoria.objects.get(id=id)
+        serializer = getCategoryById(category)
+        return Response(serializer.data)
+
+
+class GetFilesView(APIView):
+    def get(self, request, id):
+        files = Archivo.objects.filter(leccion=id)
+        serializer = getFilesSerializer(files, many=True)
+        return Response(serializer.data)
+
+
+class GetVideosView(APIView):
+    def get(self, request, id):
+        videos = Video.objects.filter(leccion=id)
+        serializer = getVideosSerializer(videos, many=True)
         return Response(serializer.data)
