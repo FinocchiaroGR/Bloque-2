@@ -76,3 +76,47 @@ class GetLessonsByFilter(APIView):
         lessons = Leccion.objects.filter(category=id)
         serializer = getLessonsSerializer(lessons, many=True)
         return Response(serializer.data)
+
+
+class GetFollowedLesson(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, id):
+        follow = None
+        student = Estudiante.objects.get(user=request.user)
+        leccion = Leccion.objects.get(id=id)
+        if Estudiante_Lecciones.objects.filter(estudiante=student, leccion=leccion).exists():
+            follow = True
+        else:
+            follow = False
+        return Response(follow)
+
+
+class SetFollowedLesson(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        id = request.data["id"]
+        follow = request.data["follow"]
+        logging.error(follow)
+
+        if (follow == "true"):
+            # dejar de seguir
+            estudiante = Estudiante.objects.get(user=request.user)
+            leccion = Leccion.objects.get(id=id)
+            estudiante_leccion = Estudiante_Lecciones.objects.get(
+                estudiante=estudiante,
+                leccion=leccion
+            )
+            estudiante_leccion.delete()
+            return Response(False, status=status.HTTP_201_CREATED)
+        else:
+            # seguir
+            estudiante = Estudiante.objects.get(user=request.user)
+            leccion = Leccion.objects.get(id=id)
+            estudiante_leccion = Estudiante_Lecciones(
+                estudiante=estudiante,
+                leccion=leccion
+            )
+            estudiante_leccion.save()
+            return Response(True, status=status.HTTP_201_CREATED)
