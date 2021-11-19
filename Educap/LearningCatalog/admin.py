@@ -47,4 +47,4 @@ class LeccionAdmin(admin.ModelAdmin):
 
 admin.site.register(Categoria, CategoriaAdmin)
 admin.site.register(Leccion, LeccionAdmin)
-admin.site.register(Estudiante_Lecciones)
+admin.site.register(Estudiante_Leccione)
