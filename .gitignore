@@ -3,3 +3,4 @@
 .vscode
 virtual
 Educap/db.sqlite3
+Educap/media/uploads/lessons/*
