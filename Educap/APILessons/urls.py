@@ -12,4 +12,5 @@ urlpatterns = [
     path('getFiles/<int:id>', views.GetFilesView.as_view()),
     path('getVideos/<int:id>', views.GetVideosView.as_view()),
     path('getUserLessons', views.GetUserLessons.as_view()),
+    path('getLessonsByFilter/<int:id>', views.GetLessonsByFilter.as_view()),
 ]
