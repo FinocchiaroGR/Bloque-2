@@ -11,4 +11,5 @@ urlpatterns = [
     path('getCategoryById/<int:id>', views.GetCategoryByName.as_view()),
     path('getFiles/<int:id>', views.GetFilesView.as_view()),
     path('getVideos/<int:id>', views.GetVideosView.as_view()),
+    path('getUserLessons', views.GetUserLessons.as_view()),
 ]
