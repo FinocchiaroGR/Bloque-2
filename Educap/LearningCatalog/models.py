@@ -27,7 +27,7 @@ class Categoria(models.Model):
         'self', blank=True, null=True, on_delete=CASCADE, verbose_name="Categoria perteneciente")
 
     def __str__(self):
-        return f"{self.pk} {self.nombre}"
+        return f"{self.nombre}"
 
 
 class Leccion(models.Model):

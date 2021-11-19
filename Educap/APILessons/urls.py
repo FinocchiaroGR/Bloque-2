@@ -8,4 +8,7 @@ app_name = "APILessons"
 urlpatterns = [
     path('lessons/getAll', views.GetLessonsView.as_view()),
     path('lesson/<int:id>', views.GetLessonView.as_view()),
+    path('getCategoryById/<int:id>', views.GetCategoryByName.as_view()),
+    path('getFiles/<int:id>', views.GetFilesView.as_view()),
+    path('getVideos/<int:id>', views.GetVideosView.as_view()),
 ]
