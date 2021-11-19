@@ -48,26 +48,23 @@ def readLesson(request, pk):
     lesson = Leccion.objects.get(pk=pk)
     files = Archivo.objects.filter(leccion=pk).order_by('orden')
     videos = Video.objects.filter(leccion=pk)
-    
+
     # Convertir urls de youtube a urls de Embed
 
+    arrVidL = [video.link for video in videos]
+    arrVidT = [video.titulo for video in videos]
+    arrVidD = [video.descripcion for video in videos]
 
-    arrVidL=[video.link for video in videos] 
-    arrVidT=[video.titulo for video in videos] 
-    arrVidD=[video.descripcion for video in videos] 
-    
-    videoCode=[]
-    vidLists= []
+    videoCode = []
+    vidLists = []
     for i in arrVidL:
         arrLinks = []
         arrLinks = i.split('/')
-        
-        videoCode.append(arrLinks[3])
-    
 
-    vidLists=list(zip(arrVidT, arrVidD, videoCode))
-    
-    
+        videoCode.append(arrLinks[3])
+
+    vidLists = list(zip(arrVidT, arrVidD, videoCode))
+
     ##############################################
 
     leccion = Leccion.objects.get(pk=pk)
@@ -80,7 +77,7 @@ def readLesson(request, pk):
             follow = False
         else:
             estudiante = Estudiante.objects.get(user=request.user)
-            if Estudiante_Lecciones.objects.filter(estudiante=estudiante, leccion=leccion).exists():
+            if Estudiante_Leccione.objects.filter(estudiante=estudiante, leccion=leccion).exists():
                 follow = True
             else:
                 follow = False
@@ -89,8 +86,8 @@ def readLesson(request, pk):
         "files": files,
         "follow": follow,
         "vidLists": vidLists,
-        
-  
+
+
     })
 
 
@@ -117,15 +114,15 @@ def followLesson(request):
             pk = jsonObject["pk"]
             estudiante = Estudiante.objects.get(user=request.user)
             leccion = Leccion.objects.get(pk=pk)
-            if Estudiante_Lecciones.objects.filter(estudiante=estudiante, leccion=leccion).exists():
-                newUnfollow = Estudiante_Lecciones.objects.get(
+            if Estudiante_Leccione.objects.filter(estudiante=estudiante, leccion=leccion).exists():
+                newUnfollow = Estudiante_Leccione.objects.get(
                     estudiante=estudiante,
                     leccion=leccion
                 )
                 newUnfollow.delete()
                 return HttpResponse("follow")
             else:
-                newFollow = Estudiante_Lecciones(
+                newFollow = Estudiante_Leccione(
                     estudiante=estudiante,
                     leccion=leccion
                 )

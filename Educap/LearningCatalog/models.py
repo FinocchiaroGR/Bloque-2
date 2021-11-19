@@ -64,6 +64,6 @@ class Video(models.Model):
     leccion = models.ForeignKey(Leccion, on_delete=CASCADE)
 
 
-class Estudiante_Lecciones(models.Model):
+class Estudiante_Leccione(models.Model):
     estudiante = models.ForeignKey(Estudiante, on_delete=CASCADE)
     leccion = models.ForeignKey(Leccion, on_delete=CASCADE)

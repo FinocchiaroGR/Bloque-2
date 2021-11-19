@@ -1,6 +1,7 @@
 from django.db.models.deletion import ProtectedError
 from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
+from LearningCatalog.models import Estudiante_Leccione
 from accounts.models import *
 from .forms import *
 import logging
@@ -9,40 +10,43 @@ from django.contrib.auth.decorators import login_required
 
 
 def studentCreate(request):
-    # Metodo post para el registro
-    if request.method == "POST":
+    if request.user.is_authenticated:
+        return redirect('myAccount:myAccount')
+    else:
+        # Metodo post para el registro
+        if request.method == "POST":
 
-        # Guardamos formularios con el contenido enviado por el usuario en las variables
-        studentFormRequest = StudentForm(request.POST, prefix='student')
-        userFormRequest = UserForm(request.POST, prefix='user')
+            # Guardamos formularios con el contenido enviado por el usuario en las variables
+            studentFormRequest = StudentForm(request.POST, prefix='student')
+            userFormRequest = UserForm(request.POST, prefix='user')
 
-        # Revisamos que los formularios del usuario sea correcto
-        if studentFormRequest.is_valid() and userFormRequest.is_valid():
+            # Revisamos que los formularios del usuario sea correcto
+            if studentFormRequest.is_valid() and userFormRequest.is_valid():
 
-            logging.error("Es valido")
+                logging.error("Es valido")
 
-            # Guardado y creacion del nuevo usuario
-            # Se guarda el registro de usuario
-            userFormRequest.save()
-            userFormSave = userFormRequest.save()
+                # Guardado y creacion del nuevo usuario
+                # Se guarda el registro de usuario
+                userFormRequest.save()
+                userFormSave = userFormRequest.save()
 
-            # Se crea el registro del estudiante pero no se guarda
-            studentFormSave = studentFormRequest.save(commit=False)
-            # Asignamos el usuario al estudiante
-            studentFormSave.user = userFormSave
-            # Guardamos el estudiante
-            studentFormSave.save()
-            return render(request, "myAccount/successfulStudentCreate.html")
-        else:
-            logging.error("Es invalido")
-            return render(request, "myAccount/studentCreate.html", {
-                "studentForm": studentFormRequest,
-                "userForm": userFormRequest
-            })
-    return render(request, "myAccount/studentCreate.html", {
-        "studentForm": StudentForm(prefix='student'),
-        "userForm": UserForm(prefix='user')
-    })
+                # Se crea el registro del estudiante pero no se guarda
+                studentFormSave = studentFormRequest.save(commit=False)
+                # Asignamos el usuario al estudiante
+                studentFormSave.user = userFormSave
+                # Guardamos el estudiante
+                studentFormSave.save()
+                return render(request, "myAccount/successfulStudentCreate.html")
+            else:
+                logging.error("Es invalido")
+                return render(request, "myAccount/studentCreate.html", {
+                    "studentForm": studentFormRequest,
+                    "userForm": userFormRequest
+                })
+        return render(request, "myAccount/studentCreate.html", {
+            "studentForm": StudentForm(prefix='student'),
+            "userForm": UserForm(prefix='user')
+        })
 
 
 @login_required(login_url="login")
@@ -123,7 +127,7 @@ def followedLessons(request):
     if request.user.is_staff:
         return redirect('admin:index')
     estudiante = Estudiante.objects.get(user=request.user)
-    estudianteLecciones = Estudiante_Lecciones.objects.filter(
+    estudianteLecciones = Estudiante_Leccione.objects.filter(
         estudiante=estudiante)
     return render(request, "myAccount/lessonsList.html", {
         "lessons": estudianteLecciones

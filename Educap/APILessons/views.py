@@ -60,7 +60,7 @@ class GetUserLessons(APIView):
 
     def get(self, request):
         estudiante = Estudiante.objects.get(user=request.user)
-        leccion_estudiante = Estudiante_Lecciones.objects.filter(
+        leccion_estudiante = Estudiante_Leccione.objects.filter(
             estudiante=estudiante)
         lessons = []
         for object in leccion_estudiante:
@@ -85,7 +85,7 @@ class GetFollowedLesson(APIView):
         follow = None
         student = Estudiante.objects.get(user=request.user)
         leccion = Leccion.objects.get(id=id)
-        if Estudiante_Lecciones.objects.filter(estudiante=student, leccion=leccion).exists():
+        if Estudiante_Leccione.objects.filter(estudiante=student, leccion=leccion).exists():
             follow = True
         else:
             follow = False
@@ -104,7 +104,7 @@ class SetFollowedLesson(APIView):
             # dejar de seguir
             estudiante = Estudiante.objects.get(user=request.user)
             leccion = Leccion.objects.get(id=id)
-            estudiante_leccion = Estudiante_Lecciones.objects.get(
+            estudiante_leccion = Estudiante_Leccione.objects.get(
                 estudiante=estudiante,
                 leccion=leccion
             )
@@ -114,7 +114,7 @@ class SetFollowedLesson(APIView):
             # seguir
             estudiante = Estudiante.objects.get(user=request.user)
             leccion = Leccion.objects.get(id=id)
-            estudiante_leccion = Estudiante_Lecciones(
+            estudiante_leccion = Estudiante_Leccione(
                 estudiante=estudiante,
                 leccion=leccion
             )

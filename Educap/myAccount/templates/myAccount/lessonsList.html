@@ -21,8 +21,8 @@
         </div>
         <hr>
         <div class="row">
+            {% for lesson in lessons %}
             <div class="col-lg-4 mt-3">
-                {% for lesson in lessons %}
                 <div class="card" style="width: 18rem;">
                     <img src="{{lesson.leccion.imagen.url}}" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -36,12 +36,12 @@
                         </a>
                     </div>
                 </div>
-                {% empty %}
-                <div class="col">
-                    <p>No hay lecciones</p>
-                </div>
-                {% endfor %}
             </div>
+            {% empty %}
+            <div class="col">
+                <p>No hay lecciones</p>
+            </div>
+            {% endfor %}
         </div>
     </div>
 </div>
