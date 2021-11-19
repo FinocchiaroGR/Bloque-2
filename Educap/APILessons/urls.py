@@ -13,4 +13,6 @@ urlpatterns = [
     path('getVideos/<int:id>', views.GetVideosView.as_view()),
     path('getUserLessons', views.GetUserLessons.as_view()),
     path('getLessonsByFilter/<int:id>', views.GetLessonsByFilter.as_view()),
+    path('followedLesson/<int:id>', views.GetFollowedLesson.as_view()),
+    path('setFollowedLesson', views.SetFollowedLesson.as_view()),
 ]
