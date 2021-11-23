@@ -7,6 +7,7 @@ from .models import *
 from accounts.models import *
 import json
 from copy import copy
+from django.db.models import Q
 # Create your views here.
 
 
@@ -33,7 +34,7 @@ def searchCategory(request):
     if request.method == "POST":
         search = request.POST.get('searchBar')
         return render(request, "LearningCatalog/searchBar.html", {
-            "categories": Categoria.objects.filter(nombre__icontains=search),
+            "categories": Categoria.objects.filter(Q(nombre__icontains=search) | Q(descripcion__icontains=search)),
             "search": search
         })
 
@@ -96,7 +97,7 @@ def searchLesson(request):
     if request.method == "POST":
         search = request.POST.get('searchBar')
         return render(request, "LearningCatalog/lessonList.html", {
-            "lessons": Leccion.objects.filter(titulo__icontains=search),
+            "lessons": Leccion.objects.filter(Q(titulo__icontains=search) | Q(descripcion__icontains=search)),
             "search": search
         })
 
