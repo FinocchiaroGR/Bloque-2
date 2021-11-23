@@ -46,6 +46,9 @@ class Leccion(models.Model):
     class Meta:
         verbose_name = ("Lección")
         verbose_name_plural = ("Lecciones")
+        
+    def __str__(self):
+        return f"{self.titulo}"
 
 
 class Archivo(models.Model):
