@@ -14,7 +14,7 @@
                 <h1 class="display-4 mb-3">
                     Categorías
                     <span class="material-icons-outlined align-middle blueIcons" style="font-size: 48px;">
-                        menu_book
+                        space_dashboard
                     </span>
                 </h1>
             </div>
@@ -34,7 +34,8 @@
                             </span>
                         </div>
                         <input type="text" class="form-control" aria-label="Sizing example input"
-                            aria-describedby="inputGroup-sizing-default" id="searchBar" name="searchBar">
+                            aria-describedby="inputGroup-sizing-default" id="searchBar" name="searchBar"
+                            value="{{search}}">
                     </div>
                 </form>
             </div>
@@ -47,17 +48,26 @@
                     <div class="card-body">
                         <h5 class="card-title">{{category.nombre}}</h5>
                         <p class="card-text">{{category.descripcion}}</p>
+
+                        {% if category.categoriaPadre == None %}
                         <a href="{% url 'LearningCatalog:subCategories' category.pk %}" class="btn btn-primary">
                             Ver subcategorias
                             <span class="material-icons-outlined align-middle">
                                 arrow_forward
                             </span>
                         </a>
+                        {% else %}
+                        <a href="{% url 'LearningCatalog:filterLessonsByCategory' category.pk %}"
+                            class="btn btn-primary">
+                            Ver contenido
+                            <span class="material-icons-outlined align-middle">
+                                arrow_forward
+                            </span>
+                        </a>
+                        {% endif %}
                     </div>
                 </div>
-            </div>
-            {% empty %}
-            <div class="col">
+            </div> {% empty %} <div class="col">
                 <p>No hay categorias</p>
             </div>
             {% endfor %}

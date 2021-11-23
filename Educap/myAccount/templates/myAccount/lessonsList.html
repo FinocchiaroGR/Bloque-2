@@ -4,7 +4,7 @@
 {% block body %}
 
 <head>
-    <title>Categorías</title>
+    <title>Mis Lecciones</title>
 </head>
 
 <div class="container">
@@ -22,8 +22,8 @@
         <hr>
         <div class="row">
             {% for lesson in lessons %}
-            <div class="col-lg-4 mt-3">
-                <div class="card" style="width: 18rem;">
+            <div class="col-12 col-md-6 col-lg-4 mt-3">
+                <div class="card mx-auto mx-md-0" style="width: 18rem;">
                     <img src="{{lesson.leccion.imagen.url}}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{lesson.leccion.titulo}}</h5>

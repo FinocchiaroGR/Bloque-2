@@ -14,7 +14,7 @@ def primaryCategory(request):
     # Respuesta HTTPS donde django procesa el html y presenta la ingerfaz
     return render(request, "LearningCatalog/primaryCategory.html", {
         # Contexto para procesar la interfaz donde se realiza un query a la base de datos y obtenemos todas las categorias
-        "categories": Categoria.objects.all(),
+        "categories": Categoria.objects.all().order_by('nombre'),
 
     })
 
@@ -34,11 +34,12 @@ def searchCategory(request):
         search = request.POST.get('searchBar')
         return render(request, "LearningCatalog/searchBar.html", {
             "categories": Categoria.objects.filter(nombre__icontains=search),
+            "search": search
         })
 
 
 def listLesson(request):
-    lessons = Leccion.objects.all()
+    lessons = Leccion.objects.all().order_by('titulo')
     return render(request, "LearningCatalog/lessonList.html", {
         "lessons": lessons
     })
@@ -96,6 +97,7 @@ def searchLesson(request):
         search = request.POST.get('searchBar')
         return render(request, "LearningCatalog/lessonList.html", {
             "lessons": Leccion.objects.filter(titulo__icontains=search),
+            "search": search
         })
 
 

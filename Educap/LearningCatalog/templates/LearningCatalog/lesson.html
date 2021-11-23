@@ -4,7 +4,7 @@
 {% block body %}
 
 <head>
-    <title>Categorías</title>
+    <title>{{lesson.titulo}}</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'LearningCatalog/css/master.css' %}">
 </head>
@@ -101,16 +101,17 @@
         <h1 class="display-4 mb-3">Videos</h1>
         <div class="row">
 
-           
-        {% for vidList in vidLists %}
-            
-            
-            
+
+            {% for vidList in vidLists %}
+
+
+
             <div class="col-12">
                 <h4>{{ vidList.0 }}</h4>
             </div>
             <div class="col-lg-6">
-                <iframe src="https://www.youtube.com/embed/{{ vidList.2 }}" width="100%" height="100%" title="YouTube video player" frameborder="0"
+                <iframe src="https://www.youtube.com/embed/{{ vidList.2 }}" width="100%" height="100%"
+                    title="YouTube video player" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen>
                 </iframe>
@@ -118,8 +119,8 @@
             <div class="col-lg-6">
                 {{ vidList.1 }}
             </div>
-            
-        {% endfor %}
+
+            {% endfor %}
         </div>
     </div>
 </div>

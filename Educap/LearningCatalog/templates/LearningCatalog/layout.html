@@ -26,9 +26,7 @@
             <div class="row py-4">
                 <div class="col-lg-4 col-md-6 mb-4 mb-lg-0"><img src="" alt="" width="180" class="mb-3">
                     <img src="{% static 'accounts/img/logoEducap.png' %}" alt="" width="180" class="mb-3">
-                    <p class="font-italic text-muted">Dedicados a las soluciones profesionales para
-                        venta y renta de equipos de impression, monitores profesionales y
-                        pizarrones interactivos.</p>
+                    <p class="font-italic text-muted">Lema de la empresa</p>
                     <ul class="list-inline mt-4">
                         <li class="list-inline-item"><a href="#" target="_blank" title="twitter"><i
                                     class="fa fa-twitter"></i></a>
@@ -56,32 +54,31 @@
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
-                    <h6 class="text-uppercase font-weight-bold mb-4">Catálogo</h6>
+                    <h6 class="text-uppercase font-weight-bold mb-4">Contenido</h6>
                     <ul class="list-unstyled mb-0">
-                        <li class="mb-2"><a href="" class=" text-muted">Productos</a></li>
-                        <li class="mb-2"><a href="" class="text-muted">Multifuncionales</a></li>
+                        <li class="mb-2"><a href="{% url 'LearningCatalog:listLesson' %}"
+                                class=" text-muted">Lecciones</a></li>
+                        <li class="mb-2"><a href="{% url 'LearningCatalog:primaryCategory' %}"
+                                class="text-muted">Categorias</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
                     <h6 class="text-uppercase font-weight-bold mb-4">Educap</h6>
                     <ul class="list-unstyled mb-0">
-                        <li class="mb-2"><a href="" class="text-muted">Mi cuenta</a></li>
-                        <li class="mb-2"><a href="" class="text-muted">Inicio de sesión</a></li>
-                        <li class="mb-2"><a href="" class="text-muted">Registro</a></li>
+                        <li class="mb-2"><a href="{% url 'myAccount:myAccount' %}" class="text-muted">Mi cuenta</a></li>
+                        <li class="mb-2"><a href="{% url 'myAccount:studentRead' %}" class="text-muted">Mi información
+                                personal</a>
+                        </li>
+                        <li class="mb-2"><a href="{% url 'myAccount:followedLessons' %}" class="text-muted">Mis
+                                lecciones seguidas</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-lg-0">
                     <h6 class="text-uppercase font-weight-bold mb-4">Información de contacto</h6>
-                    <p class="text-muted mb-4">Nicolás Zapata #840
-                        Col. Tequisquiapan
-                        C.P. 78250
-                        San Luis Potosí, S.L.P.
+                    <p class="text-muted mb-4">Información de contacto, direccion del lugar.
                     </p>
-                    <p class="text-muted mb-4">Nicolás Zapata #840
-                        Teléfonos: (444) 8 13 60 60,
-                        (444) 8 33 75 08, (444) 8 33 18 17 Ext
-                        101
-                        Celular: (444)1 27 15 57</p>
+                    <p class="text-muted mb-4">Información de contacto por telefono.</p>
                 </div>
             </div>
         </div>

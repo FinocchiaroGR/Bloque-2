@@ -14,7 +14,7 @@
                 <h1 class="display-4 mb-3">
                     Categorías
                     <span class="material-icons-outlined align-middle blueIcons" style="font-size: 48px;">
-                        category
+                        space_dashboard
                     </span>
                 </h1>
             </div>
@@ -42,8 +42,8 @@
         <div class="row">
             {% for category in categories %}
             {% if not category.categoriaPadre %}
-            <div class="col-lg-4 mt-3">
-                <div class="card" style="width: 18rem;">
+            <div class="col-12 col-md-6 col-lg-4 mt-3">
+                <div class="card mx-auto mx-md-0" style="width: 18rem;">
                     <img src="{{category.imagen.url}}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{category.nombre}}</h5>

@@ -14,7 +14,7 @@
                 <h1 class="display-4 mb-3">
                     {{category.nombre}}
                     <span class="material-icons-outlined align-middle blueIcons" style="font-size: 48px;">
-                        category
+                        space_dashboard
                     </span>
                 </h1>
             </div>
@@ -22,8 +22,8 @@
         <hr>
         <div class="row">
             {% for subCategory in subCategories %}
-            <div class="col-lg-4 mt-3">
-                <div class="card" style="width: 18rem;">
+            <div class="col-12 col-md-6 col-lg-4 mt-3">
+                <div class="card mx-auto mx-md-0" style="width: 18rem;">
                     <img src="{{subCategory.imagen.url}}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{subCategory.nombre}}</h5>

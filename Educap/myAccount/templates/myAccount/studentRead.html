@@ -4,7 +4,7 @@
 {% block body %}
 
 <head>
-    <title>Registro de estudiantes</title>
+    <title>Mi información personal</title>
 </head>
 
 <div class="container">
@@ -21,11 +21,11 @@
         </div>
         <hr>
         <div class="row my-auto justify-content-between">
-            <div class="col-lg-6">
+            <div class="col-12 col-lg-6">
                 <h4 class="align-middle">Nombre:</h4>
                 <label class="text-muted user-select-none">{{ user.first_name }} {{ user.last_name }}</label>
             </div>
-            <div class="col-lg-4 my-auto">
+            <div class="col-12 col-lg-4 my-auto">
                 <a href="{% url 'myAccount:studentUpdate' %}" class="btn btn-secondary float-right">
                     Modificar información
                 </a>

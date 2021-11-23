@@ -4,7 +4,7 @@
 {% block body %}
 
 <head>
-    <title>Categorías</title>
+    <title>Lecciones</title>
 </head>
 
 <div class="container">
@@ -34,17 +34,17 @@
                             </span>
                         </div>
                         <input type="text" class="form-control" aria-label="Sizing example input"
-                            aria-describedby="inputGroup-sizing-default" id="searchBar" name="searchBar">
+                            aria-describedby="inputGroup-sizing-default" id="searchBar" name="searchBar"
+                            value="{{search}}">
                     </div>
                 </form>
             </div>
         </div>
         <div class="row">
-
             {% for lesson in lessons %}
             {% if lesson.aprobacion %}
-            <div class="col-lg-4 mt-3">
-                <div class="card" style="width: 18rem;">
+            <div class="col-12 col-md-6 col-lg-4 mt-3">
+                <div class="card mx-auto mx-md-0" style="width: 18rem;">
                     <img src="{{lesson.imagen.url}}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{lesson.titulo}}</h5>

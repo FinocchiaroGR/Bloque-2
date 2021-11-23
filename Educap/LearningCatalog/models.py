@@ -49,7 +49,7 @@ class Leccion(models.Model):
 
 
 class Archivo(models.Model):
-    orden = models.SmallIntegerField("Orden de aparición")
+    orden = models.PositiveSmallIntegerField("Orden de aparición")
     titulo = models.CharField(max_length=150)
     descripcion = models.TextField("Descripción", max_length=500)
     path = models.FileField("Archivo", upload_to='uploads/files')
