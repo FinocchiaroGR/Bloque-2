@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'rest_framework',
     'accounts',
+    'aboutUs',
     'Index',
     'APIAccounts',
     'APICategory',
