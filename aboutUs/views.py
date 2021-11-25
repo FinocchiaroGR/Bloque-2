@@ -3,17 +3,16 @@ from .models import *
 
 # Create your views here.
 
+
 def AboutUs(request):
     aboutUsArray = SobreNosotros.objects.all()
-    
+
     for i in aboutUsArray:
         about = i
-    
+
     people = Persona.objects.all().order_by('nombre')
-        
-    
-        
-    return render(request, "AboutUs/aboutUs.html", {
+
+    return render(request, "aboutUs/aboutUs.html", {
         "about": about,
         "people": people
     })
