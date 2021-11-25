@@ -1,8 +1,9 @@
-django
-django-crispy-forms
+djangorestframework-simplejwt
 djangorestframework
 markdown
 django-filter
-django-allauth
-djangorestframework-simplejwt
+django-crispy-forms
+django
 django-heroku
+gunicorn
+Pillow
